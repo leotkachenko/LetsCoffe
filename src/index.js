@@ -3,14 +3,14 @@ const TelegramBot = require('node-telegram-bot-api');
 const config = require('./config/env');
 const log = require('./config/function-helpers-1.0.0');
 const mongoose = require('mongoose')
-const User = mongoose.model('users')
+const User = require('./model/user.model.js');
 
 mongoose.Promise = global.Promise
 log.logStart();
 
 
 mongoose.connect(config.DB_URL, {
-  useMongoClient: true
+  useNewUrlParser: true
 })
   .then(() => console.log('MongoDB connected'))
   .catch((err) => console.log(err))
