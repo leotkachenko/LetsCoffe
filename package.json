@@ -18,6 +18,7 @@
   },
   "homepage": "https://github.com/Leonid-18/LetsCoffe#readme",
   "dependencies": {
+    "mongoose": "^5.10.4",
     "node-telegram-bot-api": "^0.50.0"
   },
   "devDependencies": {
