@@ -4,7 +4,6 @@ module.exports = {
   },
 
   logStart() {
-    console.clear();
     console.log('Bot has been started ...');
   },
 
