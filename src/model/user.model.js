@@ -4,7 +4,7 @@ const Schema = mongoose.Schema
 
 var UserSchema = new Schema({
 	telegramId: String,
-	fistName: String,
+	firstName: String,
 	lastName: String
 });
 

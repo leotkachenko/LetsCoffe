@@ -2,36 +2,31 @@ const TelegramBot = require('node-telegram-bot-api');
 
 const config = require('./config/env');
 const log = require('./config/function-helpers-1.0.0');
-const mongoose = require('mongoose')
-const User = require('./model/user.model.js');
+const mongoose = require('mongoose');
 
 mongoose.Promise = global.Promise
 log.logStart();
 
-
-mongoose.connect(config.DB_URL, {
-  useNewUrlParser: true
-})
-  .then(() => console.log('MongoDB connected'))
-  .catch((err) => console.log(err))
+require('./model/user.model')
+require('./mongodb-connection')
+const User = mongoose.model('user')
 
 const bot = new TelegramBot(config.TOKEN, {
   polling: true,
 });
 
 bot.on('message', (msg) => {
-  console.log(msg.from.first_name, msg);
   let user;
 
   user = new User(msg);
-
-  user.save()
-.then(function(doc){
-    console.log("Сохранен объект", doc);
-    mongoose.disconnect();
-})
-.catch(function (err){
-    console.log(err);
-    mongoose.disconnect();
-});
+  user.save(function(err,result){ 
+    if (err){ 
+        console.log(err); 
+        console.log('Here')
+    } 
+    else{ 
+        console.log(result) 
+        console.log('There')
+    } 
+}) 
 });
