@@ -18,10 +18,12 @@
   },
   "homepage": "https://github.com/Leonid-18/LetsCoffe#readme",
   "dependencies": {
+    "express": "^4.17.1",
     "mongodb": "^3.6.2",
-    "mongoose": "^5.10.4",
+    "mongoose": "^5.10.6",
     "nconf": "^0.10.0",
     "node-telegram-bot-api": "^0.50.0",
+    "nodemon": "^2.0.4",
     "tunnel-ssh": "^4.1.4"
   },
   "devDependencies": {

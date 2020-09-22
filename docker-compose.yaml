@@ -1,0 +1,12 @@
+version: '2.0'
+services: 
+  bot:
+    build: .
+    image: leonid97/lets-coffe:latest
+    depends_on: 
+      - "mongo"
+  mongo:
+    image: "mongo"
+    ports: 
+      - "27017:27017"
+  
