@@ -8,6 +8,6 @@ module.exports = {
   },
 
   getChatId(message) {
-    return message.chat.id;
+    return message.hasOwnProperty('chat') ? message.chat.id : message.from.id;
   },
 };

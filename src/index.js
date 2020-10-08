@@ -1,32 +1,18 @@
 const TelegramBot = require('node-telegram-bot-api');
 
 const config = require('./config/env');
-const log = require('./config/function-helpers-1.0.0');
+const { logStart } = require('./config/function-helpers-1.0.0');
+const { startBotHandler } = require('./handlers/startBotHandler')
 const mongoose = require('mongoose');
 
 mongoose.Promise = global.Promise
-log.logStart();
 
-require('./model/user.model')
-require('./mongodb-connection')
-const User = mongoose.model('user')
+logStart();
 
 const bot = new TelegramBot(config.TOKEN, {
-  polling: true,
+	polling: true,
 });
+bot.on("polling_error", (m) => console.log(m));
 
-bot.on('message', (msg) => {
-  let user;
+startBotHandler(bot)
 
-  user = new User(msg);
-  user.save(function(err,result){ 
-    if (err){ 
-        console.log(err); 
-        console.log('Here')
-    } 
-    else{ 
-        console.log(result) 
-        console.log('There')
-    } 
-}) 
-});
