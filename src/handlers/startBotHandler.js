@@ -24,8 +24,13 @@ const startBotHandler = (bot) => {
             }
 
         })
-        bot.sendMessage(getChatId(query), 'Hi everyone', messageOptions)
-    });
+        bot.sendPhoto(getChatId(query), __dirname + '/images/letscoffee.png',
+            {
+                caption: 'This bot will help your business communicate with customers.\n Maintain order statistics. Find the most attractive menu items and be available to your audience 24 hours a day.',
+                ...messageOptions
+            }
+        );
+    })
 }
 
 module.exports = {
